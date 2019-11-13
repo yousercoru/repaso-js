@@ -1,0 +1,89 @@
+/*
+EJERCICIOS DE REPASO
+lunes 11 de noviembre
+*/
+
+// Ejercicio 1:
+const nums = [1, 2, 3, 1];
+
+function isRepeat (arrayNums) {
+    for (let i = 0; i < arrayNums.length; i++) {
+        for (let j = i + 1; j < arrayNums.length; j++) {
+            if (arrayNums[i] === arrayNums[j]) {
+                return true;  
+            }
+        }
+    }
+    return false;
+}
+
+console.log(isRepeat(nums));
+
+
+
+
+// EJercicio 2:
+
+
+const findMaxConsecutiveOne = function(nums) {
+    let repeatedOnes = 0;
+    let mayor = 0;
+    for (let i = 0; i < nums.length; i++) {
+        if (nums [i] === 1) {
+            repeatedOnes++;
+            if (repeatedOnes > mayor){
+                mayor = repeatedOnes;
+            }
+        }
+
+        if (nums[i] === 0) {
+            repeatedOnes = 0;
+        }
+    }
+
+        return mayor;
+};
+
+const nums = [1, 1, 0, 1, 1, 1]
+const answer = findMaxConsecutiveOne(nums);
+console.log(answer);
+
+
+
+
+
+/*
+// Ejercicio 3:
+Given an array nums, write a function to move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+
+Example:
+
+Input: [0,1,0,3,12]
+Output: [1,3,12,0,0]
+Note:
+
+You must do this in-place without making a copy of the array.
+Minimize the total number of operations.
+*/
+
+
+
+
+function moveZerosToEnd(numsArray) {
+    let size = numsArray.length;
+    for (let i = 0; i < size; i++) {
+        if(numsArray[i] === 0) {
+            let temp = numsArray.splice(i, 1);
+            numsArray.push(temp[0]);
+            i = i - 1
+            size--
+        }
+    }
+    return numsArray;
+};
+
+
+const nums = [0, 1, 0, 3, 12];
+const nums2 = [0, 1, 0, 0, 5];
+console.log(moveZerosToEnd(nums));
+console.log(moveZerosToEnd(nums2));
